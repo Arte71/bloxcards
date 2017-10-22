@@ -28,7 +28,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 				["Name"] = "Wolfbitten Elf",
 				["Effect"] = {
 					Name = "Woof",
-					Description = "Whenever you cast an action or terrain spell, transform this card.",
+					Description = "Whenever you cast an action or terrain spell, transform this card. This card can't generate icons.",
 					["Type"] = "OnAllyCast",
 					["Power"] = {{"Summon","Festive Werewolf"},{"Damage",9999,"Self"}},
 					Target = "Ally",
@@ -36,6 +36,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 				["Bio"] = "Can he deliver your gifts in time?",
 			}
 		},
+		["Token"] = true,
 		["Health"] = 200,
 		["Power"] = 200,
 		["Rarity"] = "Common",
@@ -45,7 +46,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Red"] = 1,},
 		["Effect"] = {
 			Name = "Halloween",
-			Description = "Whenever you cast an action or terrain spell, transform this card.",
+			Description = "Whenever you cast an action or terrain spell, transform this card. This card can't generate icons.",
 			["Type"] = "OnAllyCast",
 			["Power"] = {{"Summon","Werewolf Savage"},{"Damage",9999,"Self"}},
 			Target = "Ally",
@@ -62,7 +63,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 				["Name"] = "Festive Werewolf",
 				["Effect"] = {
 					Name = "Halloween",
-					Description = "Whenever your opponent casts an action or terrain spell, untransform this card.",
+					Description = "Whenever your opponent casts an action or terrain spell, untransform this card. This card can't generate icons.",
 					["Type"] = "OnEnemyCast",
 					["Power"] = {{"Summon","Wolfbitten Elf"},{"Damage",9999,"Self"}},
 					Target = "Ally",
@@ -70,6 +71,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 				["Bio"] = "The best kind of werewolf.",
 			}
 		},
+		["Token"] = true,
 		["Health"] = 400,
 		["Power"] = 400,
 		["Rarity"] = "Token",
@@ -79,7 +81,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Red"] = 1,},
 		["Effect"] = {
 			Name = "Halloween",
-			Description = "Whenever your opponent casts an action or terrain spell, untransform this card.",
+			Description = "Whenever your opponent casts an action or terrain spell, untransform this card. This card can't generate icons.",
 			["Type"] = "OnEnemyCast",
 			["Power"] = {{"Summon","Wolfbitten Noob"},{"Damage",9999,"Self"}},
 			Target = "Ally",
@@ -108,11 +110,12 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Brothers Grotesque"] = {
-		["Id"] = 540075890,
+		["Id"] = 900461972,
 		["Name"] = "Brothers Grotesque",
 		["Health"] = 1700,
 		["Power"] = 900,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Blue", 
 		["Cost"] = {["Blue"] = 6, ["Neutral"] = 6,},
@@ -132,6 +135,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 0,
 		["Power"] = 0,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Blue", 
 		["Archetype"] = "Lunar",
@@ -147,7 +151,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Glaciem Knight"] = {
-		["Id"] = 632582777,
+		["Id"] = 878891184,
 		["Name"] = "Glaciem Knight",
 		["Health"] = 700,
 		["Power"] = 450,
@@ -187,7 +191,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Horrarceusdon"] = {
-		["Id"] = 540076314,
+		["Id"] = 893440462,
 		["Name"] = "Horrarceusdon",
 		["Health"] = 1600,
 		["Power"] = 0,
@@ -197,16 +201,16 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Blue"] = 3, ["Neutral"] = 4,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "Whenever you cast an action or terrain spell, set the health of all fighters to 400, then give Horrarceusdon 400 health.",
+			Description = "Whenever you cast an action or terrain spell, set the health of all fighters to 500, then give Horrarceusdon 500 health.",
 			["Type"] = "OnAllyCast",
-			["Power"] = {{"SetHealth",400},{"Heal",400,"Self"}},
+			["Power"] = {{"SetHealth",500},{"Heal",500,"Self"}},
 			Target = "All",
 		},
 		["Bio"] = "Zanzel wanted him to die. He agreed. o3o",
 	},
 	
 	["Stormchaser's Gambit"] = {
-		["Id"] = 540076783,
+		["Id"] = 893412816,
 		["Name"] = "Stormchaser's Gambit",
 		["Health"] = 0,
 		["Power"] = 0,
@@ -429,21 +433,27 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["AttackEffect"] = "Dash",
 		["Color"] = "Blue", 
 		["Cost"] = {["Blue"] = 99,},
-		["Archetype"] = "Gambit",
 		["AttackBlock"] = true,
 		["Effect"] = {
 			Name = "Pyrotechnics",
 			Description = "7 Charges. At the end of this turn, if you've cast 7 action or terrain spells after this one, deal 1250 damage to the opponent.",
 			["Type"] = "OnEnd",
-			["Power"] = {{"Inflict",1250}},
+			["Power"] = {{"Inflict",1250},{"Damage",9999,"Self"}},
 			Target = "Opponent",
 		},
 		["Bio"] = "Grapeshots ruined, Tendrils of Agony depleted. All that is left is the rush.",		
 	},
 	
 	["Eisenhower, the Alchemist"] = {
-		["Id"] = 543041104,
+		["Id"] = 662115685,
 		["Name"] = "Eisenhower, the Alchemist",
+		["AltCards"] = {
+			["Eisenhower-Sun"] = {
+				["Id"] = 897236455,
+				["Name"] = "Eisenhower, the President",
+				["Bio"] = "I will take as much time as needed to legalise necromancy.",
+			},
+		},
 		["Health"] = 4000,
 		["Power"] = 0,
 		["Rarity"] = "Legendary",
@@ -456,7 +466,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 			["Power"] = {{"EndTurn",1}},
 			Target = "Opponent",
 		},
-		["Bio"] = "All it takes to go from student to archnemesis is a dead spouse.",		
+		["Bio"] = "I will take as much time as needed to avenge my love.",		
 	},
 	
 	["Haunted Overseer Armor"] = {
@@ -471,7 +481,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Green"] = 3,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "When targeted, transform into an Overseer Beast..",
+			Description = "When targeted, transform into an Overseer Beast.",
 			["Type"] = "OnTarget",
 			["Power"] = {{"Summon","Overseer Beast"},{"Damage",9999,"Self"}},
 			Target = "Ally",
@@ -506,6 +516,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 0,
 		["Power"] = 0,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Yellow", 
 		["Cost"] = {["Yellow"] = 6,},
@@ -542,9 +553,9 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Yellow"] = 1,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "Whenever an allied fighter dies, Cereal Killer gains 75 health and 75 power.",
+			Description = "Whenever an allied fighter dies, Cereal Killer gains 100 power.",
 			["Type"] = "OnAllyDeath",
-			["Power"] = {{"Heal",75},{"Strengthen",75}},
+			["Power"] = {{"Strengthen",100}},
 			Target = "Self",
 		},
 		["Bio"] = "I like my noobs wholemeal.",
@@ -593,7 +604,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 			["Power"] = {{"Heal",150,"Opponent"}},
 			Target = "Ally",
 		},
-		["Bio"] = "I like my noobs wholemeal.",
+		["Bio"] = "He certainly is.",
 	},
 	
 	["Creepy Toy"] = {
@@ -637,9 +648,11 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	["DIY: Dark Dominus"] = {
 		["Id"] = 540075686,
 		["Name"] = "DIY: Dark Dominus",
+		["Archetype"] = "Saprasam",
 		["Health"] = 550,
 		["Power"] = 550,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Green", 
 		["Cost"] = {["Green"] = 4,},
@@ -717,13 +730,14 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 0,
 		["Power"] = 0,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Yellow", 
 		["Requirement"] = {false,6,true},
 		["Cost"] = {["Yellow"] = 4,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "Cast Final Revels only if your opponent has 6 or more fighters in play. Unlock all allied fighters.",
+			Description = "Your opponent must control at least 6 fighters to cast this card. Unlock all allied fighters.",
 			["Type"] = "OnSummon",
 			["Power"] = {{"Unlock",9999}},
 			Target = "Ally",
@@ -800,9 +814,9 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Green"] = 3,},
 		["Effect"] = {
 			Name = "Let It Grow",
-			Description = "Whenever an allied fighter dies, your opponent loses 150 life and you gain 150 life.",
+			Description = "Whenever an allied fighter dies, drain 100 health from your opponent.",
 			["Type"] = "OnAllyDeath",
-			["Power"] = {{"Cost",-150},{"Inflict",150}},
+			["Power"] = {{"Inflict",100},{"Inflict",-100,"Ally"}},
 			Target = "Opponent",
 		},
 		["Bio"] = "The gentle souls in Zanzel's wilderness never are.",
@@ -819,9 +833,9 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Yellow"] = 3,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "When this card enters play, Your opponent loses 500 life. When this card dies, your opponent gains 1000 life. ",
+			Description = "When this card enters play, Your opponent loses 600 life. When this card dies, your opponent gains 800 life. ",
 			["Type"] = "OnSummon",
-			["Power"] = {{"Inflict",500},{"Summon","Enforcer Token","Ally"},{"Damage",9999,"Self"}},
+			["Power"] = {{"Inflict",600},{"Summon","Enforcer Token","Ally"},{"Damage",9999,"Self"}},
 			Target = "Opponent",
 		},
 		["Bio"] = "ALWAYS accept candy from cops.",
@@ -838,9 +852,9 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Yellow"] = 3,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "When this card enters play, Your opponent loses 500 life. When this card dies, your opponent gains 1000 life. ",
+			Description = "When this card enters play, Your opponent loses 600 life. When this card dies, your opponent gains 800 life. ",
 			["Type"] = "OnDeath",
-			["Power"] = {{"Inflict",-1000}},
+			["Power"] = {{"Inflict",-800}},
 			Target = "Opponent",
 		},
 		["Bio"] = "ALWAYS accept candy from cops.",
@@ -891,6 +905,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 1600,
 		["Power"] = 150,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Blue",
 		["Cost"] = {["Blue"] = 5,},
@@ -939,7 +954,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 			["Power"] = {{"Weaken",50}},
 			Target = "Opponent",
 		},
-		["Bio"] = "Value be damned.",
+		["Bio"] = "Value be darned.",
 	},
 	
 	["Little Girl"] = {
@@ -1120,10 +1135,10 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["AttackEffect"] = "Dash",
 		["Color"] = "Green", 
 		["Cost"] = {["Green"] = 3,},
-		["Requirement"] = {false,3,true},
+		["Requirement"] = {false,4,true},
 		["Effect"] = {
 			Name = "Slander",
-			Description = "Cast only if your opponent controls three or more fighters. Lock all enemy fighters for two turns.",
+			Description = "Your opponent must control at least 4 or more fighters to cast this card. Lock all enemy fighters for two turns.",
 			["Type"] = "OnSummon",
 			["Power"] = {{"Lock",2,"Opponent"}},
 			Target = "Ally",
@@ -1164,7 +1179,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 			Name = "Pyrotechnics",
 			Description = "When this card is targeted, reverse it back into the Final Tree,",
 			["Type"] = "OnTarget",
-			["Power"] = {{"Damage",9999,"Self"},{"Summon","Final Tree"}},
+			["Power"] = {{"Summon","Final Tree"},{"Damage",9999,"Self"}},
 			Target = "Ally",
 		},
 		["Bio"] = "This tree is a reminder of what we've lost in these dark times.",
@@ -1296,6 +1311,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 400,
 		["Power"] = 400,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 3, ["Neutral"] = 2,},
@@ -1335,6 +1351,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 800,
 		["Power"] = 450,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 6, ["Neutral"] = 2,},
@@ -1376,6 +1393,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Health"] = 200,
 		["Power"] = 200,
 		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 7,},
@@ -1628,7 +1646,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Red"] = 2, ["Neutral"] = 1,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "Generate a green icon.",
+			Description = "Gain a green icon.",
 			["Type"] = "OnSummon",
 			["Power"] = {{"Green",1}},
 			Target = "Ally",
@@ -1664,7 +1682,8 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Power"] = 500,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
-		["CounterAttackBlockBlock"] = true,
+		["Archetype"] = "Lycanthrope",
+		["CounterBlock"] = true,
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 1,},
 		["Effect"] = {
@@ -1684,6 +1703,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Power"] = 1000,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
+		["Archetype"] = "Lycanthrope",
 		["FaceBlock"] = true,
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 1,},
@@ -1704,12 +1724,13 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Power"] = 2000,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
+		["Archetype"] = "Lycanthrope",
 		["CounterAttackBlock"] = true,
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 1,},
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "Max level. Whenever any fighter dies, summon a Wolfbitten Noob and put a Wolven Blitz into your hand. Eclipse can't be counterattacked.",
+			Description = "Max level. Can't be counterattacked. Whenever any fighter dies, summon a Wolfbitten Noob and put a Wolven Blitz into your hand.",
 			["Type"] = "OnAnyDeath",
 			["Power"] = {{"Summon","Wolfbitten Noob"},{"Add","Wolven Blitz"}},
 			Target = "Ally",
@@ -1718,7 +1739,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Unspeakable Summoning"] = {
-		["Id"] = 543041104,
+		["Id"] = 662121961,
 		["Name"] = "Unspeakable Summoning",
 		["Health"] = 0,
 		["Power"] = 0,
@@ -1727,133 +1748,153 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 13,},
 		["Effect"] = {
-			Name = "Pyrotechnics",
+			Name = "Stud",
 			Description = "Your opponent summons Lezus.",
 			["Type"] = "OnSummon",
-			["Power"] = {{"RandomSummon","U DUN GOOFED"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"}}},
 			Target = "Opponent",
 		},
 		["Bio"] = "Zanzel scoffed when she saw Lezus. These demons are why the world is so impure.",
 	},
 	
 	["Lezus 1"] = {
-		["Id"] = 552162352,
+		["Id"] = 662115933,
 		["Name"] = "Lezus",
 		["Health"] = 700,
-		["Power"] = 400,
+		["Power"] = 100,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red",
 		["Cost"] = {["Red"] = 6,},
-		["Archetype"] = "U DUN GOOFED",
+		["Archetype"] = "Udungoofed",
 		["Effect"] = {
-			Name = "Pyrotechnics",
-			Description = "I am Lezus.",
+			Name = "Stud",
+			Description = "Fool!",
 			["Type"] = "OnEnd",
-			["Power"] = {{"RandomSummon","U DUN GOOFED","Ally"},{"Heal",400,"Archetype"},{"Heal",400,"Opponent"},{"Damage",400,"Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"Heal",400,"Archetype"},{"Heal",400,"Opponent"},{"Damage",400,"Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
 			Target = "Self",
 		},
-		["Bio"] = "Fool.",
+		["Bio"] = "",
 	},
 	
 	["Lezus 2"] = {
-		["Id"] = 552162352,
+		["Id"] = 662115933,
 		["Name"] = "Lezus",
 		["Health"] = 700,
-		["Power"] = 400,
+		["Power"] = 100,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 6,},
-		["Archetype"] = "U DUN GOOFED",
+		["Archetype"] = "Udungoofed",
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "I am Lezus.",
+			Description = "Peon!",
 			["Type"] = "OnEnd",
-			["Power"] = {{"RandomSummon","U DUN GOOFED","Ally"},{"SetNeutral",0,"Ally"},{"Blue",3,"Opponent"},{"Green",3,"Opponent"},{"White",3,"Opponent"},{"Yellow",3,"Opponent"},{"Red",3,"Opponent"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"SetNeutral",0,"Ally"},{"Blue",3,"Opponent"},{"Green",3,"Opponent"},{"White",3,"Opponent"},{"Yellow",3,"Opponent"},{"Red",3,"Opponent"},{"Neutral",3,"Opponent"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
 			Target = "Self",
 		},
-		["Bio"] = "Peon.",
+		["Bio"] = "",
 	},
 	
 	["Lezus 3"] = {
-		["Id"] = 552162352,
+		["Id"] = 662115933,
 		["Name"] = "Lezus",
 		["Health"] = 700,
-		["Power"] = 400,
+		["Power"] = 100,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 6,},
-		["Archetype"] = "U DUN GOOFED",
+		["Archetype"] = "Udungoofed",
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "I am Lezus.",
+			Description = "Imbecile!",
 			["Type"] = "OnEnd",
-			["Power"] = {{"RandomSummon","U DUN GOOFED", "Ally"},{"Draw",2,"Opponent"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"Draw",2,"Opponent"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
 			Target = "Self",
 		},
-		["Bio"] = "Imbecile.",
+		["Bio"] = "",
 	},
 	
 	["Lezus 4"] = {
-		["Id"] = 552162352,
+		["Id"] = 662115933,
 		["Name"] = "Lezus",
 		["Health"] = 700,
-		["Power"] = 400,
+		["Power"] = 100,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 6,},
-		["Archetype"] = "U DUN GOOFED",
+		["Archetype"] = "Udungoofed",
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "I am Lezus.",
+			Description = "Cur!",
 			["Type"] = "OnEnd",
-			["Power"] = {{"RandomSummon","U DUN GOOFED","Ally"},{"Heal",400,"Opponent"},{"Strengthen",400,"Opponent"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"Heal",400,"Opponent"},{"Strengthen",400,"Opponent"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
 			Target = "Self",
 		},
-		["Bio"] = "Cur.",
+		["Bio"] = "",
 	},
 	
 	["Lezus 5"] = {
-		["Id"] = 552162352,
+		["Id"] = 662115933,
 		["Name"] = "Lezus",
 		["Health"] = 700,
-		["Power"] = 400,
+		["Power"] = 100,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 6,},
-		["Archetype"] = "U DUN GOOFED",
+		["Archetype"] = "Udungoofed",
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "I am Lezus.",
+			Description = "Recur!",
 			["Type"] = "OnEnd",
-			["Power"] = {{"RandomSummon","U DUN GOOFED","Ally"},{"RandomSummon","U DUN GOOFED","Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
 			Target = "Self",
 		},
-		["Bio"] = "Recur.",
+		["Bio"] = "",
 	},
 	
 	["Lezus 6"] = {
-		["Id"] = 552162352,
+		["Id"] = 662115933,
 		["Name"] = "Lezus",
 		["Health"] = 700,
-		["Power"] = 400,
+		["Power"] = 100,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Red", 
 		["Cost"] = {["Red"] = 6,},
-		["Archetype"] = "U DUN GOOFED",
+		["Archetype"] = "Udungoofed",
 		["Effect"] = {
 			Name = "Pyrotechnics",
-			Description = "I am Lezus.",
+			Description = "Scatter!",
 			["Type"] = "OnEnd",
-			["Power"] = {{"RandomSummon","U DUN GOOFED","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 7"},"Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
 			Target = "Self",
 		},
-		["Bio"] = "Scatter.",
+		["Bio"] = "",
+	},
+	
+	["Lezus 7"] = {
+		["Id"] = 662115933,
+		["Name"] = "Lezus",
+		["Health"] = 700,
+		["Power"] = 100,
+		["Rarity"] = "Token",
+		["AttackEffect"] = "Dash",
+		["Color"] = "Red", 
+		["Cost"] = {["Red"] = 6,},
+		["Archetype"] = "Udungoofed",
+		["Effect"] = {
+			Name = "Pyrotechnics",
+			Description = "Failure!",
+			["Type"] = "OnEnd",
+			["Power"] = {{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5"},"Ally"},{"RandomSummon", {"Lezus 1","Lezus 2","Lezus 3","Lezus 4","Lezus 5","Lezus 6"},"Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Add","Nightmare","Ally"},{"Heal",400,"Opponent"},{"Strengthen",400,"Opponent"},{"Draw",2,"Opponent"},{"SetNeutral",0,"Ally"},{"Blue",3,"Opponent"},{"Green",3,"Opponent"},{"White",3,"Opponent"},{"Yellow",3,"Opponent"},{"Red",3,"Opponent"},{"Neutral",3,"Opponent"},{"Heal",400,"Archetype"},{"Heal",400,"Opponent"},{"Damage",400,"Ally"},{"Damage",9999},{"Unlock",9999,"Archetype"}},
+			Target = "Self",
+		},
+		["Bio"] = "",
 	},
 	
 	["Mad Scientist"] = {
@@ -2066,10 +2107,10 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Ghoost"] = {
-		["Id"] = 574198186,
+		["Id"] = 681970495,
 		["Name"] = "Ghoost",
 		["Health"] = 100,
-		["Power"] = 200,
+		["Power"] = 300,
 		["Rarity"] = "Common",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Blue", 
@@ -2077,7 +2118,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Blue"] = 1, ["Neutral"] = 7,},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "Summon three Morphic Goos. Ghoost can't be counterattacked.",
+			Description = "Can't be counterattacked. Summon three Morphic Goos.",
 			["Type"] = "OnSummon",
 			["Power"] = {{"Summon","Morphic Goo"},{"Summon","Morphic Goo"},{"Summon","Morphic Goo"}},
 			Target = "Ally",
@@ -2119,8 +2160,8 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Blue"] = 2, ["Neutral"] = 4,},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "Can't Attack. When this card destroys another, put a random red or blue action into your hand.",
-			["Type"] = "OnDestroy",
+			Description = "Can't Attack. Whenever this card survives an attack, put a random red or blue action into your hand.",
+			["Type"] = "OnAttacked",
 			["Power"] = {{"RandomAdd","Lunar"}},
 			Target = "Ally",
 		},
@@ -2159,7 +2200,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Blue"] = 2, ["Neutral"] = 2,},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "Whenever your opponent casts an action or terrin spell, lock all enemy fighters for two turns.",
+			Description = "Whenever your opponent casts an action or terrain spell, lock all enemy fighters for two turns.",
 			["Type"] = "OnEnemyCast",
 			["Power"] = {{"Lock",3}},
 			Target = "Opponent",
@@ -2355,9 +2396,9 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Yellow"] = 1},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "Deal 50 damage to all fighters. They gain 50 attack.",
+			Description = "Lower the health of all fighters by 50 and increase their power by 50. Draw a card.",
 			["Type"] = "OnSummon",
-			["Power"] = {{"Damage",50},{"Strengthen",50}},
+			["Power"] = {{"Damage",50},{"Strengthen",50},{"Draw",1,"Ally"}},
 			Target = "All",
 		},
 		["Bio"] = "He raged at the world, at his family, at his live. But mostly he just raged.",
@@ -2383,7 +2424,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Patric Sinister"] = {
-		["Id"] = 574198606,
+		["Id"] = 959853982,
 		["Name"] = "Patric Sinister",
 		["Health"] = 350,
 		["Power"] = 350,
@@ -2422,18 +2463,18 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Red"] = 2, ["Neutral"] = 4,},
 		["Effect"] = {
 			Name = "Stud",
-			Description = "Can't attack. When this fighter destroys another, it gains 200 health and power.",
-			["Type"] = "OnDestroy",
-			["Power"] = {{"Heal",200},{"Strengthen",200}},
+			Description = "Can't attack. When this fighter survives an attack, it gains 150 health and power.",
+			["Type"] = "OnAttacked",
+			["Power"] = {{"Heal",150},{"Strengthen",150}},
 			Target = "Self",
 		},
 		["Bio"] = "I came seeking a challenge. All I found was you.",
 	},
 	
 	["Eisenhower, the Alchemist"] = {
-		["Id"] = 543041104,
+		["Id"] = 662115685,
 		["Name"] = "Eisenhower, the Alchemist",
-		["Health"] = 5700,
+		["Health"] = 4025,
 		["Power"] = 0,
 		["Rarity"] = "Legendary",
 		["AttackEffect"] = "Dash",
@@ -2492,11 +2533,11 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 
 	["Evil Prince"] = {
-		["Id"] = 596217196,
+		["Id"] = 893425803,
 		["Name"] = "Evil Prince",
 		["AltCards"] = {
 			["Evil Prince-Val"] = {
-				["Id"] = 655015108,
+				["Id"] = 893427386,
 				["Name"] = "Lovestruck Prince",
 				["Effect"] = {
 					Name = "Woof",
@@ -2514,7 +2555,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["AttackEffect"] = "Dash",
 		["Archetype"] = "Lycanthrope",
 		["Color"] = "Red", 
-		["Cost"] = {["Neutral"] = 2,},
+		["Cost"] = {["Neutral"] = 2, ["Red"] = 1,},
 		["Effect"] = {
 			Name = "Stud",
 			Description = "Whenever you cast an action or terrain spell, transform this card, then deal 100 damage to all enemy fighters.",
@@ -2526,11 +2567,11 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Werefrog"] = {
-		["Id"] = 596217279,
+		["Id"] = 893426470,
 		["Name"] = "Werefrog",
 			["AltCards"] = {
 			["Werefrog-Val"] = {
-				["Id"] = 655015511,
+				["Id"] = 893428350,
 				["Name"] = "Loving Frog",
 				["Effect"] = {
 					Name = "Woof",
@@ -2548,7 +2589,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["AttackEffect"] = "Dash",
 		["Archetype"] = "Lycanthrope",
 		["Color"] = "Red", 
-		["Cost"] = {["Neutral"] = 2,},
+		["Cost"] = {["Neutral"] = 2, ["Red"] = 1,},
 		["Effect"] = {
 			Name = "Stud",
 			Description = "Whenever your opponent casts an action or terrain spell, untransform this card, then deal 100 damage to all enemy fighters.",
@@ -2680,7 +2721,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Homeless Man"] = {
-		["Id"] = 543041104,
+		["Id"] = 662121363,
 		["Name"] = "Homeless Man",
 		["Health"] = 450,
 		["Power"] = 450,
@@ -2701,7 +2742,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["DIY: Werewolf"] = {
-		["Id"] = 543041104,
+		["Id"] = 662116256,
 		["Name"] = "DIY: Werewolf",
 		["Health"] = 900,
 		["Power"] = 900,
@@ -2733,7 +2774,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Archetype"] = "Lycanthrope",
 		["Effect"] = {
 			Name = "Eviscerate",
-			Description = "Cast only if you control a Lycanthrope. Deal 200 damage to a target fighter, then draw a card.",
+			Description = "You must control at least one Lycanthrope to cast this card. Deal 200 damage to a target fighter, then draw a card.",
 			["Type"] = "OnSummon",
 			["Power"] = {{"Draw",1},{"Damage",200,"Single"}},
 			Target = "Ally",
@@ -2891,7 +2932,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Id"] = 540076733,
 		["Name"] = "Nerf Zombie",
 		["Health"] = 100,
-		["Power"] = 100,
+		["Power"] = 200,
 		["Rarity"] = "Common",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Green", 
@@ -2899,10 +2940,10 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Neutral"] = 1,},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "Whenever an allied fighter dies, you gain 200 life.",
-			["Type"] = "OnAllyDeath",
-			["Power"] = {{"Cost",-200}},
-			Target = "Ally",
+			Description = "Whenever you summon a fighter, all Zombies gain 50 health.",
+			["Type"] = "OnAllySummon",
+			["Power"] = {{"Heal",50}},
+			Target = "Archetype",
 		},
 		["Bio"] = "IT'S NERF OR NOTHING!",
 	},
@@ -2918,7 +2959,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Green"] = 13,},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "When this card is summoned, end the turn and give it 500 health and power. If this card strikes the opponent, they lose the game.",
+			Description = "Summon an 1100/800 fighter, then end the turn. If Priestess Zanzel strikes the opponent, they instantly lose the game.",
 			["Type"] = "OnSummon",
 			["Power"] = {{"Summon","Zanzel"},{"EndTurn",1}},
 			Target = "Ally",
@@ -2929,15 +2970,15 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	["Zanzel"] = {
 		["Id"] = 540076591,
 		["Name"] = "Priestess Zanzel, the Promised One",
-		["Health"] = 500,
-		["Power"] = 500,
+		["Health"] = 1100,
+		["Power"] = 800,
 		["Rarity"] = "Token",
 		["AttackEffect"] = "Scatter",
 		["Color"] = "Green", 
 		["Cost"] = {["Green"] = 13,},
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "When this card is summoned, end the turn and give it 500 health and power. If this card strikes the opponent, they lose the game.",
+			Description = "If Priestess Zanzel strikes the opponent, they instantly lose the game.",
 			["Type"] = "OnStrike",
 			["Power"] = {{"Inflict",9999999}},
 			Target = "Opponent",
@@ -2967,8 +3008,14 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	["Hallow, the Sugarlord"] = {
 		["Id"] = 540076365,
 		["Name"] = "Hallow, the Sugarlord",
-		["Health"] = 100,
-		["Power"] = 100,
+		["AltCards"] = {
+			["Hallow, the Sugarlord-Sun"] = {
+				["Id"] = 897238293,
+				["Bio"] = "Sometimes, the lord of Halloween just needs to take a break. Those times are every Monday.",
+			};
+		},	
+		["Health"] = 700,
+		["Power"] = 0,
 		["Rarity"] = "Legendary",
 		["AttackEffect"] = "Dash",
 		["Color"] = "Yellow", 
@@ -3003,7 +3050,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 
 	["Morphic Goo"] = {
-		["Id"] = 540822293,
+		["Id"] = 683432647,
 		["Name"] = "Morphic Goo",
 		["Health"] = 50,
 		["Power"] = 50,
@@ -3015,7 +3062,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Archetype"] = "Morphic",
 		["Effect"] = {
 			Name = "Haydoscale",
-			Description = "When this card is targeted, reveal its true form.",
+			Description = "When this card is targeted, reveal its true form. This card can't generate icons.",
 			["Type"] = "OnTarget",
 			["Power"] = {{"RandomSummon","Any"},{"Damage",9999,"Self"}},
 			Target = "Ally",
@@ -3044,7 +3091,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Undead Teddy"] = {
-		["Id"] = 574177392,
+		["Id"] = 666426765,
 		["Name"] = "Undead Teddy",
 		["Health"] = 100,
 		["Power"] = 100,
@@ -3063,7 +3110,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},	
 	
 	["Teddy1"] = {
-		["Id"] = 574177392,
+		["Id"] = 666426765,
 		["Name"] = "Undead Teddy",
 		["Health"] = 100,
 		["Power"] = 100,
@@ -3082,7 +3129,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},
 	
 	["Teddy2"] = {
-		["Id"] = 574177392,
+		["Id"] = 666426765,
 		["Name"] = "Undead Teddy",
 		["Health"] = 100,
 		["Power"] = 100,
@@ -3101,7 +3148,7 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},	
 	
 	["Teddy3"] = {
-		["Id"] = 574177392,
+		["Id"] = 666426765,
 		["Name"] = "Undead Teddy",
 		["Health"] = 100,
 		["Power"] = 100,
@@ -3120,8 +3167,8 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 	},	
 	
 	["Treasured Unicorn"] = {
-		["Id"] = 574177392,
-		["Name"] = "Treasured 	",
+		["Id"] = 666386958,
+		["Name"] = "Treasured Unicorn",
 		["Health"] = 700,
 		["Power"] = 50,
 		["Rarity"] = "Uncommon",
@@ -3130,16 +3177,16 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Cost"] = {["Green"] = 3,},
 		["Effect"] = {
 			Name = "Undead Rising",
-			Description = "Both players generate 3 white icons.",
-			["Type"] = "OnSummon",
-			["Power"] = {{"Neutral",3,"All"}},
+			Description = "When this card survives being attacked, generate a green icon.",
+			["Type"] = "OnAttacked",
+			["Power"] = {{"Green",1}},
 			Target = "Ally",
 		},
 		["Bio"] = "Zanzel used this specific breed to supply her forces with supplies.",
 	},	
 	
 	["Graboid"] = {
-		["Id"] = 574177392,
+		["Id"] = 666429825,
 		["Name"] = "Graboid",
 		["Health"] = 200,
 		["Power"] = 300,
@@ -3151,12 +3198,32 @@ local stirrings = { -- CARD_ID, NAME, POWER, HEALTH, RARITY,BIO
 		["Effect"] = {
 			Name = "Undead Rising",
 			Description = "This card can't generate icons. When this card attacks, lock it and the card it attacked for 1 turn.",
-			["Type"] = "OnSummon",
+			["Type"] = "OnAttack",
 			["Power"] = {{"Lock",1},{"Lock",1,"Self"}},
-			Target = "Ally",
+			Target = "Aggressor",
 		},
 		["Bio"] = "Zanzel was amazed at their power, but this power was destined to die off.",
-	},			
+	},
+	
+	["LovecraftWizard"] = {
+		["Id"] = 712020702,
+		["Name"] = "LovecraftWizard",
+		["Health"] = 400,
+		["Power"] = 400,
+		["Rarity"] = "Rare",
+		["Archetype"] = "Hero",
+		["AttackEffect"] = "Slash",
+		["Color"] = "Green",
+		["Cost"] = {["Neutral"] = 3, ["Green"] = 3, ["Red"] = 2,},
+		["Effect"] = {
+			Name = "Undead Rising",
+			Description = "At the end of your turns, gift your opponent 200 life. Allied fighters drain 100 health from enemy fighters.",
+			["Type"] = "OnEnd",
+			["Power"] = {{"Inflict",-200,"Opponent"},{"Cost",200},{"Damage",100,"Opponent"},{"Heal",100,"Ally"}},
+			Target = "Self",
+		},
+		["Bio"] = "If I am mad, it is mercy! May the gods pity the man who in his callousness can remain sane to the hideous end!",
+	},	
 }
 
 return stirrings
